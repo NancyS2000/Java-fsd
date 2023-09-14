@@ -1,0 +1,45 @@
+public class MethodExample {
+
+    // Method with no parameters and no return value
+    public void printHello() {
+        System.out.println("Hello, World!");
+    }
+
+    // Method with parameters and a return value
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    // Method with parameters and no return value (void)
+    public void greetPerson(String name) {
+        System.out.println("Hello, " + name + "!");
+    }
+
+    public static void main(String[] args) {
+        MethodExample example = new MethodExample();
+
+        // Calling a method with no parameters and no return value
+        example.printHello();
+
+        // Calling a method with parameters and a return value
+        int result = example.add(5, 3);
+        System.out.println("5 + 3 = " + result);
+
+        // Calling a method with parameters and no return value
+        example.greetPerson("Alice");
+
+        // Calling methods in other ways
+        int x = 10;
+        int y = 20;
+        int sum = example.add(x, y); // Using variables as arguments
+        System.out.println(x + " + " + y + " = " + sum);
+
+        // Calling methods within expressions
+        System.out.println("The sum of 7 and 9 is " + example.add(7, 9));
+
+        // Calling methods within loops or conditionals
+        for (int i = 1; i <= 3; i++) {
+            example.greetPerson("Person " + i);
+        }
+    }
+}
