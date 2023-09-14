@@ -1,0 +1,23 @@
+package string;
+
+public class StringConversionDemo {
+    public static void main(String[] args) {
+        // Create a string
+        String originalString = "Hello, World!";
+
+        // Convert the string to StringBuffer
+        StringBuffer stringBuffer = new StringBuffer(originalString);
+
+        // Convert the string to StringBuilder
+        StringBuilder stringBuilder = new StringBuilder(originalString);
+
+        // Display the original string
+        System.out.println("Original String: " + originalString);
+
+        // Display the StringBuffer version
+        System.out.println("StringBuffer: " + stringBuffer.toString());
+
+        // Display the StringBuilder version
+        System.out.println("StringBuilder: " + stringBuilder.toString());
+    }
+}
