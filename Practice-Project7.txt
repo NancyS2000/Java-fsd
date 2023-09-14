@@ -1,0 +1,35 @@
+package innerclass;
+
+public class OuterClass {
+    private int outerField = 10;
+
+    // Inner class
+    public class InnerClass {
+        public void display() {
+            System.out.println("InnerClass: Accessing outerField from InnerClass: " + outerField);
+        }
+    }
+
+    // Another inner class
+    public class AnotherInnerClass {
+        private int innerField = 20;
+
+        public void display() {
+            System.out.println("AnotherInnerClass: Accessing outerField from AnotherInnerClass: " + outerField);
+            System.out.println("AnotherInnerClass: Accessing innerField from AnotherInnerClass: " + innerField);
+        }
+    }
+
+    public static void main(String[] args) {
+        OuterClass outer = new OuterClass();
+
+        // Creating instances of inner classes
+        OuterClass.InnerClass inner = outer.new InnerClass();
+        OuterClass.AnotherInnerClass anotherInner = outer.new AnotherInnerClass();
+
+        // Accessing members of inner classes
+        inner.display();
+        anotherInner.display();
+    }
+}
+
