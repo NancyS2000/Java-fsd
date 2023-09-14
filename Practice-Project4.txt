@@ -1,0 +1,48 @@
+package Practiceproject4;
+
+public class ConstructorExample {
+		    private int value;
+
+		    // Default Constructor
+		    public ConstructorExample() {
+		        System.out.println("Default Constructor Called");
+		        value = 0;
+		    }
+
+		    // Parameterized Constructor
+		    public ConstructorExample(int val) {
+		        System.out.println("Parameterized Constructor Called");
+		        value = val;
+		    }
+
+		    // Copy Constructor (This is not a built-in constructor in Java; we define it here)
+		    public ConstructorExample(ConstructorExample other) {
+		        System.out.println("Copy Constructor Called");
+		        this.value = other.value;
+		    }
+
+		    public int getValue() {
+		        return value;
+		    }
+
+		    public static void main(String[] args) {
+		        // Create objects using different constructors
+		        ConstructorExample defaultConstructorObj = new ConstructorExample();
+		        ConstructorExample paramConstructorObj = new ConstructorExample(42);
+
+		        // Access and print object values
+		        System.out.println("Default Constructor Value: " + defaultConstructorObj.getValue());
+		        System.out.println("Parameterized Constructor Value: " + paramConstructorObj.getValue());
+
+		        // Create an object using copy constructor
+		        ConstructorExample copyConstructorObj = new ConstructorExample(paramConstructorObj);
+
+		        // Verify the value of the copied object
+		        System.out.println("Copy Constructor Value: " + copyConstructorObj.getValue());
+		    }
+		
+
+
+	}
+
+
