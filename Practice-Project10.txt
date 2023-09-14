@@ -1,0 +1,37 @@
+package project10;
+
+import java.util.regex.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class RegularExpressionVerification {
+    public static void main(String[] args) {
+        // Input text containing email addresses
+        String text = "Please contact support@example.com or sales@company.com for assistance.";
+
+        // Regular expression pattern for matching email addresses
+        String pattern = "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}\\b";
+
+        // Create a Pattern object
+        Pattern emailPattern = Pattern.compile(pattern);
+
+        // Create a Matcher object
+        Matcher matcher = emailPattern.matcher(text);
+
+        // List to store matched email addresses
+        List<String> emailAddresses = new ArrayList<>();
+
+        // Find and extract email addresses from the text
+        while (matcher.find()) {
+            String emailAddress = matcher.group();
+            emailAddresses.add(emailAddress);
+        }
+
+        // Display the matched email addresses
+        System.out.println("Matched Email Addresses:");
+        for (String email : emailAddresses) {
+            System.out.println(email);
+        }
+    }
+}
+
