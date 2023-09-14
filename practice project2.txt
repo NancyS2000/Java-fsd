@@ -1,0 +1,50 @@
+package sleepandwait;
+
+class SharedResource {
+    boolean isDataReady = false;
+
+    synchronized void produceData() {
+        // Simulate data production
+        System.out.println("Producing data...");
+        try {
+            Thread.sleep(2000); // Sleep for 2 seconds
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Data is ready.");
+        isDataReady = true;
+        notify(); // Notify waiting thread
+    }
+
+    synchronized void consumeData() {
+        if (!isDataReady) {
+            try {
+                System.out.println("Consumer waiting for data...");
+                wait(); // Wait for data to be ready
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        // Consume the data
+        System.out.println("Consuming data...");
+        isDataReady = false;
+    }
+}
+
+public class SleepAndWaitDemo {
+    public static void main(String[] args) {
+        SharedResource sharedResource = new SharedResource();
+
+        Thread producerThread = new Thread(() -> {
+            sharedResource.produceData();
+        });
+
+        Thread consumerThread = new Thread(() -> {
+            sharedResource.consumeData();
+        });
+
+        producerThread.start();
+        consumerThread.start();
+    }
+}
+
