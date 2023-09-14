@@ -1,0 +1,39 @@
+package thread;
+
+class MyThread extends Thread {
+    @Override
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Thread (extending Thread class) " + Thread.currentThread().getId() + ": " + i);
+            try {
+                Thread.sleep(1000); // Sleep for 1 second
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+        }
+    }
+}
+
+class MyRunnable implements Runnable {
+    @Override
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Thread (implementing Runnable) " + Thread.currentThread().getId() + ": " + i);
+            try {
+                Thread.sleep(1000); // Sleep for 1 second
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+        }
+    }
+}
+
+public class CombinedThreadDemo {
+    public static void main(String[] args) {
+        MyThread thread1 = new MyThread();
+        Thread thread2 = new Thread(new MyRunnable());
+        
+        thread1.start(); // Start thread 1 (extending Thread class)
+        thread2.start(); // Start thread 2 (implementing Runnable)
+    }
+}
