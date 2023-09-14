@@ -1,0 +1,60 @@
+package project67;
+import java.util.*;
+
+public class MapVerification {
+    public static void main(String[] args) {
+        // Creating a HashMap
+        Map<String, Integer> hashMap = new HashMap<>();
+
+        // Adding key-value pairs to the HashMap
+        hashMap.put("Alice", 25);
+        hashMap.put("Bob", 30);
+        hashMap.put("Charlie", 28);
+
+        // Printing the HashMap
+        System.out.println("HashMap:");
+        for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+        // Creating a TreeMap
+        Map<String, Integer> treeMap = new TreeMap<>();
+
+        // Adding key-value pairs to the TreeMap
+        treeMap.put("David", 22);
+        treeMap.put("Eva", 35);
+        treeMap.put("Frank", 19);
+
+        // Printing the TreeMap (sorted by keys)
+        System.out.println("\nTreeMap (sorted by keys):");
+        for (Map.Entry<String, Integer> entry : treeMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+        // Accessing values by key
+        System.out.println("\nAccessing values by key:");
+        System.out.println("Age of Alice: " + hashMap.get("Alice"));
+        System.out.println("Age of David: " + treeMap.get("David"));
+
+        // Checking if a key exists
+        System.out.println("\nChecking if a key exists:");
+        System.out.println("Does Bob exist in HashMap? " + hashMap.containsKey("Bob"));
+        System.out.println("Does Carol exist in TreeMap? " + treeMap.containsKey("Carol"));
+
+        // Removing a key-value pair
+        hashMap.remove("Bob");
+        treeMap.remove("Eva");
+
+        // Printing the updated maps
+        System.out.println("\nHashMap after removing Bob:");
+        for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+        System.out.println("\nTreeMap after removing Eva:");
+        for (Map.Entry<String, Integer> entry : treeMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+    }
+}
+
