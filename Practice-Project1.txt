@@ -1,0 +1,29 @@
+package project1;
+
+		public class TypeCastingExample {
+		    public static void main(String[] args) {
+		        // Implicit Type Casting (Widening)
+		        int intValue = 10;
+		        double doubleValue = intValue; // Implicit cast from int to double
+		        System.out.println("Implicit Casting (Widening):");
+		        System.out.println("int value: " + intValue);
+		        System.out.println("double value: " + doubleValue);
+
+		        // Explicit Type Casting (Narrowing)
+		        double anotherDoubleValue = 15.75;
+		        int anotherIntValue = (int) anotherDoubleValue; // Explicit cast from double to int
+		        System.out.println("\nExplicit Casting (Narrowing):");
+		        System.out.println("double value: " + anotherDoubleValue);
+		        System.out.println("int value: " + anotherIntValue);
+
+		        // Be cautious when casting
+		        double largeDoubleValue = 123456789.987654321;
+		        int largeIntValue = (int) largeDoubleValue; // This will result in data loss
+		        System.out.println("\nCasting with Data Loss:");
+		        System.out.println("double value: " + largeDoubleValue);
+		        System.out.println("int value (with data loss): " + largeIntValue);
+		    }
+		}
+
+
+	
