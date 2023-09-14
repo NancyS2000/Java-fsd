@@ -1,0 +1,51 @@
+package synchronization;
+
+class BankAccount {
+    private double balance;
+
+    public BankAccount(double initialBalance) {
+        this.balance = initialBalance;
+    }
+
+    public synchronized void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited " + amount + ". New balance: " + balance);
+    }
+
+    public synchronized void withdraw(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+            System.out.println("Withdrawn " + amount + ". New balance: " + balance);
+        } else {
+            System.out.println("Insufficient funds to withdraw " + amount);
+        }
+    }
+}
+
+class AccountHolder extends Thread {
+    private BankAccount account;
+
+    public AccountHolder(BankAccount account) {
+        this.account = account;
+    }
+
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            account.deposit(100);
+            account.withdraw(50);
+        }
+    }
+}
+
+public class SynchronizationDemo {
+    public static void main(String[] args) {
+        BankAccount sharedAccount = new BankAccount(1000);
+
+        AccountHolder user1 = new AccountHolder(sharedAccount);
+        AccountHolder user2 = new AccountHolder(sharedAccount);
+
+        user1.start();
+        user2.start();
+    }
+}
+
