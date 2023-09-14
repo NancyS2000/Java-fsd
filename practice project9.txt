@@ -1,0 +1,43 @@
+package diamond;
+
+//Define a common interface
+interface Animal {
+ void makeSound();
+}
+
+//Create two interfaces that extend the Animal interface
+interface Cat extends Animal {
+ void meow();
+}
+
+interface Dog extends Animal {
+ void bark();
+}
+
+//Implement the Cat and Dog interfaces in a single class
+class Pet implements Cat, Dog {
+ @Override
+ public void makeSound() {
+     System.out.println("Pet makes a sound");
+ }
+
+ @Override
+ public void meow() {
+     System.out.println("Pet meows");
+ }
+
+ @Override
+ public void bark() {
+     System.out.println("Pet barks");
+ }
+}
+
+public class Main {
+ public static void main(String[] args) {
+     Pet myPet = new Pet();
+     myPet.makeSound();
+     myPet.meow();
+     myPet.bark();
+ }
+}
+
