@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class CollectionsExample {
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        ArrayList<String> fruits = new ArrayList<>();
+
+        // Add elements to the ArrayList
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+        fruits.add("Date");
+
+        // Display the ArrayList
+        System.out.println("ArrayList elements: " + fruits);
+
+        // Get and modify an element
+        String secondFruit = fruits.get(1);
+        fruits.set(1, "Blueberry");
+
+        // Display the modified ArrayList
+        System.out.println("Modified ArrayList: " + fruits);
+
+        // Remove an element
+        fruits.remove("Cherry");
+
+        // Display the ArrayList after removal
+        System.out.println("ArrayList after removal: " + fruits);
+
+        // Iterate through the ArrayList using an iterator
+        System.out.println("Iterating through the ArrayList:");
+        Iterator<String> iterator = fruits.iterator();
+        while (iterator.hasNext()) {
+            String fruit = iterator.next();
+            System.out.println(fruit);
+        }
+    }
+}
