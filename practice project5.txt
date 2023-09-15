@@ -1,0 +1,51 @@
+package exceptions;
+
+//Custom Exception
+class CustomException extends Exception {
+ public CustomException(String message) {
+     super(message);
+ }
+}
+
+public class ExceptionDemo {
+ public static void main(String[] args) {
+     try {
+         // Example of using 'throw' to manually throw an exception
+         int age = -5;
+         if (age < 0) {
+             throw new IllegalArgumentException("Age cannot be negative.");
+         }
+
+         // Example of using 'throws' to declare an exception
+         divideByZero();
+
+         // Example of custom exception
+         int result = divide(10, 0);
+         System.out.println("Result: " + result);
+     } catch (ArithmeticException e) {
+         System.out.println("ArithmeticException: " + e.getMessage());
+     } catch (IllegalArgumentException e) {
+         System.out.println("IllegalArgumentException: " + e.getMessage());
+     } catch (CustomException e) {
+         System.out.println("CustomException: " + e.getMessage());
+     } finally {
+         // 'finally' block always executes, even if an exception occurred or not
+         System.out.println("Finally block executed.");
+     }
+ }
+
+ // Example of a method that declares an exception using 'throws'
+ public static void divideByZero() throws ArithmeticException {
+     int result = 10 / 0;
+     System.out.println("Result: " + result);
+ }
+
+ // Example of a method that throws a custom exception
+ public static int divide(int num, int denom) throws CustomException {
+     if (denom == 0) {
+         throw new CustomException("Division by zero is not allowed.");
+     }
+     return num / denom;
+ }
+}
+
