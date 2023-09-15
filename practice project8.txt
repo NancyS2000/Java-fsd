@@ -1,0 +1,80 @@
+package pillarsinjava;
+
+//Encapsulation: Creating a class with private fields and public methods to access and modify them.
+class Student {
+ private String name;
+ private int age;
+
+ // Constructor to initialize the object
+ public Student(String name, int age) {
+     this.name = name;
+     this.age = age;
+ }
+
+ // Getter methods for encapsulated fields
+ public String getName() {
+     return name;
+ }
+
+ public int getAge() {
+     return age;
+ }
+
+ // Setter methods for encapsulated fields
+ public void setName(String name) {
+     this.name = name;
+ }
+
+ public void setAge(int age) {
+     if (age >= 0) {
+         this.age = age;
+     }
+ }
+
+ // Abstraction: Providing a method to display student information
+ public void displayInfo() {
+     System.out.println("Name: " + name);
+     System.out.println("Age: " + age);
+ }
+}
+
+//Inheritance: Creating a subclass that inherits from the Student class
+class UndergraduateStudent extends Student {
+ private String major;
+
+ public UndergraduateStudent(String name, int age, String major) {
+     super(name, age);
+     this.major = major;
+ }
+
+ @Override
+ public void displayInfo() {
+     super.displayInfo(); // Call the parent class method
+     System.out.println("Major: " + major);
+ }
+}
+
+public class Main {
+ public static void main(String[] args) {
+     // Creating objects of the Student class
+     Student student1 = new Student("Alice", 20);
+     Student student2 = new Student("Bob", 22);
+
+     // Accessing and modifying object properties using getter and setter methods
+     student1.setAge(21);
+     student2.setName("Bobby");
+
+     // Creating an object of the UndergraduateStudent class (inheritance)
+     UndergraduateStudent undergradStudent = new UndergraduateStudent("Charlie", 19, "Computer Science");
+
+     // Polymorphism: Using a common reference to refer to objects of different classes
+     Student[] students = { student1, student2, undergradStudent };
+
+     // Displaying information about all students
+     for (Student student : students) {
+         student.displayInfo();
+         System.out.println(); // Add a blank line for separation
+     }
+ }
+}
+
