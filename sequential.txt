@@ -1,0 +1,52 @@
+package exponential;
+
+import java.util.Arrays;
+
+public class ExponentialSearch {
+
+    // Function to perform exponential search
+    public static int exponentialSearch(int[] arr, int target) {
+        if (arr[0] == target) {
+            return 0; // If the target is at the first element, return 0
+        }
+
+        int size = arr.length;
+        int bound = 1;
+
+        // Find the range for binary search
+        while (bound < size && arr[bound] <= target) {
+            bound *= 2;
+        }
+
+        // Perform binary search within the found range
+        int left = bound / 2;
+        int right = Math.min(bound, size - 1);
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (arr[mid] == target) {
+                return mid; // Return the index where the target is found
+            } else if (arr[mid] < target) {
+                left = mid + 1; // Search in the right half
+            } else {
+                right = mid - 1; // Search in the left half
+            }
+        }
+
+        return -1; // Return -1 if the target is not found in the array
+    }
+
+    public static void main(String[] args) {
+        int[] arr = { 2, 4, 6, 8, 10, 12, 14, 16 };
+        int target = 10;
+
+        int result = exponentialSearch(arr, target);
+
+        if (result != -1) {
+            System.out.println("Element " + target + " found at index " + result);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+    }
+}
