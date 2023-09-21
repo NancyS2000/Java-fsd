@@ -1,0 +1,27 @@
+package queue;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class QueueExample {
+    public static void main(String[] args) {
+        // Create a queue using a LinkedList
+        Queue<Integer> queue = new LinkedList<>();
+
+        // Enqueue elements into the queue
+        queue.offer(1);
+        queue.offer(2);
+        queue.offer(3);
+        queue.offer(4);
+
+        // Display the queue
+        System.out.println("Queue elements: " + queue);
+
+        // Dequeue elements from the queue
+        int dequeuedElement = queue.poll();
+        System.out.println("Dequeued element: " + dequeuedElement);
+
+        // Display the updated queue
+        System.out.println("Queue elements after dequeue: " + queue);
+    }
+}
