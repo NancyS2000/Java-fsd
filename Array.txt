@@ -1,0 +1,37 @@
+package array;
+
+public class RightRotateArray {
+    public static void main(String[] args) {
+        int[] originalArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int rotateSteps = 5;
+
+        rotateArray(originalArray, rotateSteps);
+
+        System.out.println("Rotated Array:");
+        for (int num : originalArray) {
+            System.out.print(num + " ");
+        }
+    }
+
+    public static void rotateArray(int[] arr, int steps) {
+        int length = arr.length;
+        int[] rotatedArray = new int[length];
+
+        // Copy the last 'steps' elements to the beginning of rotatedArray
+        for (int i = 0; i < steps; i++) {
+            rotatedArray[i] = arr[length - steps + i];
+        }
+
+        // Copy the remaining elements to the rotatedArray
+        for (int i = steps; i < length; i++) {
+            rotatedArray[i] = arr[i - steps];
+        }
+
+        // Update the original array with the rotated elements
+        for (int i = 0; i < length; i++) {
+            arr[i] = rotatedArray[i];
+        }
+    }
+}
+
+
