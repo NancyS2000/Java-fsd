@@ -1,0 +1,77 @@
+package circular;
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class CircularLinkedList {
+    Node head;
+
+    CircularLinkedList() {
+        head = null;
+    }
+
+    // Method to insert a new element while maintaining sorted order
+    void insertSorted(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+            newNode.next = head;
+        } else if (data < head.data) {
+            // If the new data is smaller than the head, insert at the beginning
+            newNode.next = head;
+            Node current = head;
+            while (current.next != head) {
+                current = current.next;
+            }
+            current.next = newNode;
+            head = newNode;
+        } else {
+            // Insert the new data in its sorted position
+            Node current = head;
+            while (current.next != head && current.next.data < data) {
+                current = current.next;
+            }
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+    }
+
+    // Method to display the circular linked list
+    void display() {
+        if (head == null) {
+            System.out.println("The circular linked list is empty.");
+            return;
+        }
+
+        Node current = head;
+        do {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        } while (current != head);
+
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        CircularLinkedList list = new CircularLinkedList();
+
+        list.insertSorted(2);
+        list.insertSorted(4);
+        list.insertSorted(1);
+        list.insertSorted(3);
+
+        System.out.println("Sorted Circular Linked List:");
+        list.display();
+    }
+}
+
