@@ -1,0 +1,32 @@
+package demo;
+
+import java.io.IOException;
+import javax.servlet.GenericServlet;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebServlet;
+
+@WebServlet("/GenericServletDemo")
+public class GenericServletDemo extends GenericServlet {
+
+    @Override
+    public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+        // Get the value of the 'name' parameter from the request
+        String name = request.getParameter("name");
+
+        // Set the response content type
+        response.setContentType("text/html");
+
+        // Get the response writer
+        java.io.PrintWriter out = response.getWriter();
+
+        // Generate the HTML response
+        out.println("<html>");
+        out.println("<head><title>Generic Servlet Example</title></head>");
+        out.println("<body>");
+        out.println("<h2>Hello, " + name + "!</h2>");
+        out.println("</body>");
+        out.println("</html>");
+    }
+}
